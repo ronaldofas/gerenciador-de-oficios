@@ -11,8 +11,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Adicionar a configuração do DbContext para usar SQLite
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<GerenciadorDeOficiosDbContext>(options =>
-    options.UseSqlite("Data Source=database.db"));
+    options.UseSqlite(connectionString));
 
 var app = builder.Build();
 
