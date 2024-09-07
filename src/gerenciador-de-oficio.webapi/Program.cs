@@ -1,9 +1,18 @@
+using GerenciadorDeOficios.Infra.Data.Context;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Adicionar a configuração do DbContext para usar SQLite
+builder.Services.AddDbContext<GerenciadorDeOficiosDbContext>(options =>
+    options.UseSqlite("Data Source=database.db"));
 
 var app = builder.Build();
 
@@ -14,7 +23,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 var summaries = new[]
 {
