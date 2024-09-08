@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <Compile Remove="DependencyInjectionResolver.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DependencyInjection\DependencyInjectionResolver.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GerenciadorDeOficios.Infra.Data\GerenciadorDeOficios.Infra.Data.csproj" />
+  </ItemGroup>
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+</Project>

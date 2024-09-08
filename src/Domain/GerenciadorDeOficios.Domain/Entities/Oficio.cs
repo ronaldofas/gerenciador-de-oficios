@@ -2,6 +2,7 @@ namespace GerenciadorDeOficios.Domain.Entities;
 
 public class Oficio
 {
+    
     public int Id { get; set; }
     public string Forum { get; set; }
     public string NumeroProcesso { get; set; }
@@ -13,4 +14,20 @@ public class Oficio
 
     public Empresa EmpresaSolicitante { get; set; }
     public int EmpresaSolicitanteId { get; set; }
+
+    public Oficio(int id, string forum, string numeroProcesso, string varaProcesso, string tipoAcao, string tipoProcesso, 
+        string localRedacao, DateTime data, Empresa empresaSolicitante, int empresaSolicitanteId)
+    {
+        Id = id;
+        Forum = forum;
+        NumeroProcesso = numeroProcesso;
+        VaraProcesso = varaProcesso;
+        TipoAcao = tipoAcao;
+        TipoProcesso = tipoProcesso;
+        LocalRedacao = localRedacao;
+        Data = data;
+        EmpresaSolicitante = empresaSolicitante;
+        EmpresaSolicitanteId = empresaSolicitanteId;
+    }
+
 }

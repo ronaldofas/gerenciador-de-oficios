@@ -1,7 +1,6 @@
-using GerenciadorDeOficios.Infra.Data.Context;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using Swashbuckle.AspNetCore;
+using GerenciadorDeOficios.Infra.IoC.DependencyInjection;
+using gerenciador_de_oficio.webapi;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,10 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Adicionar a configuração do DbContext para usar SQLite
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<GerenciadorDeOficiosDbContext>(options =>
-    options.UseSqlite(connectionString));
+// Configurar dependências da infraestrutura
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
@@ -24,7 +21,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
 var summaries = new[]
 {
@@ -46,9 +43,4 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast")
 .WithOpenApi();
 
-app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
+await app.RunAsync();

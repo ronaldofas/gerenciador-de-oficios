@@ -13,4 +13,20 @@ public class Pessoa
 
     public Endereco Endereco { get; set; }
     public int EnderecoId { get; set; }
+
+    public Pessoa(int id, string nome, string nacionalidade, string estadoCivil, 
+        string rg, string cpf, string telefone, string email, Endereco endereco, int enderecoId)
+    {
+        Id = id;
+        Nome = nome;
+        Nacionalidade = nacionalidade;
+        EstadoCivil = estadoCivil;
+        Rg = rg;
+        Cpf = cpf;
+        Telefone = telefone;
+        Email = email;
+        Endereco = endereco;
+        EnderecoId = enderecoId;
+    }
+
 }

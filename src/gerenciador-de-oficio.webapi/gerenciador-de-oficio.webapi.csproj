@@ -12,5 +12,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\GerenciadorDeOficios.Infra.Data\GerenciadorDeOficios.Infra.Data.csproj" />
+    <ProjectReference Include="..\Domain\GerenciadorDeOficios.Infra.IoC\GerenciadorDeOficios.Infra.IoC.csproj" />
   </ItemGroup>
 </Project>
